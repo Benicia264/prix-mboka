@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { AuthError } from "next-auth";
 import { redirect } from "next/navigation";
 import { signIn } from "@/auth";
@@ -65,6 +66,16 @@ async function Formulaire({
           Se connecter →
         </button>
       </form>
+
+      <p className="mt-6 text-center text-sm text-gray-700">
+        Vous n’avez pas de compte ?{" "}
+        <Link
+          href="/inscription"
+          className="font-semibold text-orange-700 hover:text-orange-800"
+        >
+          S’inscrire
+        </Link>
+      </p>
     </>
   );
 }

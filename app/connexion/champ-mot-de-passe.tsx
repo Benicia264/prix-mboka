@@ -2,7 +2,13 @@
 
 import { useState } from "react";
 
-export default function ChampMotDePasse() {
+export default function ChampMotDePasse({
+  autoComplete = "current-password",
+  minLength,
+}: {
+  autoComplete?: string;
+  minLength?: number;
+}) {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -12,7 +18,8 @@ export default function ChampMotDePasse() {
         name="password"
         type={visible ? "text" : "password"}
         placeholder="Mot de passe"
-        autoComplete="current-password"
+        autoComplete={autoComplete}
+        minLength={minLength}
         required
         className="w-full rounded-xl border border-gray-300 p-3 pr-24 text-gray-900 focus:border-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-200"
       />
