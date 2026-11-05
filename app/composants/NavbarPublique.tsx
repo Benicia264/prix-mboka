@@ -10,7 +10,7 @@ async function BoutonsCompte() {
     return (
       <Link
         href="/prix"
-        className="rounded-full bg-linear-to-r from-[#ff8a1f] to-[#ff6a00] px-6 py-2.5 text-sm font-semibold text-white shadow hover:brightness-95"
+        className="whitespace-nowrap rounded-full bg-linear-to-r from-[#ff8a1f] to-[#ff6a00] px-4 py-2 text-xs font-semibold text-white shadow hover:brightness-95 sm:px-6 sm:py-2.5 sm:text-sm"
       >
         Accéder aux prix
       </Link>
@@ -21,13 +21,13 @@ async function BoutonsCompte() {
     <>
       <Link
         href="/connexion"
-        className="rounded-full border border-[#ffb36b] bg-white px-6 py-2.5 text-sm font-semibold text-slate-900 hover:bg-[#fff6ee]"
+        className="whitespace-nowrap rounded-full border border-[#ffb36b] bg-white px-3 py-2 text-xs font-semibold text-slate-900 hover:bg-[#fff6ee] sm:px-6 sm:py-2.5 sm:text-sm"
       >
         Se connecter
       </Link>
       <Link
         href="/inscription"
-        className="rounded-full bg-linear-to-r from-[#ff8a1f] to-[#ff6a00] px-6 py-2.5 text-sm font-semibold text-white shadow hover:brightness-95"
+        className="whitespace-nowrap rounded-full bg-linear-to-r from-[#ff8a1f] to-[#ff6a00] px-3 py-2 text-xs font-semibold text-white shadow hover:brightness-95 sm:px-6 sm:py-2.5 sm:text-sm"
       >
         S’inscrire
       </Link>
@@ -38,8 +38,8 @@ async function BoutonsCompte() {
 export default function NavbarPublique() {
   return (
     <header className="relative z-20 bg-transparent">
-      <nav className="flex items-center justify-between gap-4 px-4 py-4 lg:px-[4.5vw]">
-        <Link href="/" aria-label="Prix Mboka, accueil">
+      <nav className="flex items-center justify-between gap-2 px-4 py-3 sm:gap-4 sm:py-4 lg:px-[4.5vw]">
+        <Link href="/" aria-label="Prix Mboka, accueil" className="shrink-0">
           <Logo tagline />
         </Link>
 
@@ -64,8 +64,8 @@ export default function NavbarPublique() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Suspense fallback={<span className="block h-10 w-44" />}>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Suspense fallback={<span className="block h-9 w-32 sm:w-44" />}>
             <BoutonsCompte />
           </Suspense>
         </div>

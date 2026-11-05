@@ -1,7 +1,11 @@
 export default function Logo({ tagline = false }: { tagline?: boolean }) {
   return (
-    <span className="flex items-center gap-3">
-      <svg width="46" height="52" viewBox="0 0 36 40" aria-hidden="true">
+    <span className="flex items-center gap-2 sm:gap-3">
+      <svg
+        viewBox="0 0 36 40"
+        aria-hidden="true"
+        className="h-9 w-8 shrink-0 sm:h-[52px] sm:w-[46px]"
+      >
         <defs>
           <linearGradient id="logo-degrade" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stopColor="#ffa31a" />
@@ -27,7 +31,7 @@ export default function Logo({ tagline = false }: { tagline?: boolean }) {
         </g>
       </svg>
       <span className="flex flex-col leading-tight">
-        <span className="text-3xl font-bold text-slate-900">
+        <span className="whitespace-nowrap text-xl font-bold text-slate-900 sm:text-3xl">
           Prix <span className="text-[#ff7a00]">Mboka</span>
         </span>
         {tagline && (
