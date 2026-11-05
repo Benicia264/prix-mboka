@@ -31,6 +31,7 @@ model Product {
 model PriceReport {
   id        String   @id @default(cuid())
   price     Int
+  comment   String?
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id])
   userId    String
