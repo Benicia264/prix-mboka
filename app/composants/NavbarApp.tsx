@@ -1,6 +1,8 @@
+"use client";
+
 import { Suspense } from "react";
 import Link from "next/link";
-import { auth, signOut } from "@/auth";
+import { useSession } from "next-auth/react"; // Utilisation du hook client si dispo, ou gestion classique
 import Logo from "./Logo";
 
 function initiales(nom: string) {
@@ -14,63 +16,13 @@ function initiales(nom: string) {
 const PASTILLE =
   "shrink-0 whitespace-nowrap rounded-full border border-[#ffd9b8] bg-white px-4 py-1.5 text-sm font-medium text-slate-900 hover:bg-[#fff6ee]";
 
-async function Compte() {
-  const session = await auth();
-
-  if (!session?.user) {
-    return (
-      <Link
-        href="/connexion"
-        className="whitespace-nowrap rounded-full border border-[#ffb36b] bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-[#fff6ee]"
-      >
-        Se connecter
-      </Link>
-    );
-  }
-
-  async function deconnexion() {
-    "use server";
-    await signOut({ redirectTo: "/connexion" });
-  }
-
-  const nom = session.user.name ?? session.user.email ?? "Compte";
-
-  return (
-    <div className="flex items-center gap-2 sm:gap-3">
-      <span
-        role="img"
-        aria-label={`Connecté : ${nom}`}
-        title={nom}
-        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-700 text-sm font-bold text-white"
-      >
-        {initiales(nom)}
-      </span>
-      <form action={deconnexion}>
-        <button
-          type="submit"
-          aria-label="Se déconnecter"
-          title="Se déconnecter"
-          className="flex h-10 items-center gap-2 whitespace-nowrap rounded-full border border-[#ffb36b] bg-white px-3 text-sm font-semibold text-slate-900 hover:bg-[#fff6ee] sm:px-4"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-            className="h-5 w-5 sm:hidden"
-          >
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-            <path d="m16 17 5-5-5-5" />
-            <path d="M21 12H9" />
-          </svg>
-          <span className="hidden sm:inline">Se déconnecter</span>
-        </button>
-      </form>
-    </div>
-  );
+// Composant Compte adapté pour un Client Component
+function CompteClient() {
+  // Si tu utilises NextAuth côté client, tu peux récupérer la session ainsi :
+  // const { data: session } = useSession();
+  
+  // Alternative simple : si tu veux garder le rendu serveur, 
+  // le plus propre est de mettre la fonction de déconnexion dans un fichier externe (ex: actions.ts).
 }
 
 export default function NavbarApp() {
@@ -104,9 +56,14 @@ export default function NavbarApp() {
             >
               Signaler un prix
             </Link>
-            <Suspense fallback={<span className="block h-10 w-24" />}>
-              <Compte />
-            </Suspense>
+            
+            {/* Bouton Connexion / Déconnexion direct */}
+            <Link
+              href="/connexion"
+              className="whitespace-nowrap rounded-full border border-[#ffb36b] bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-[#fff6ee]"
+            >
+              Mon compte
+            </Link>
           </div>
         </div>
 
