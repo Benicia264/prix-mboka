@@ -26,7 +26,7 @@ export const metadata = {
     siteName: "Prix Mboka",
     images: [
       {
-        url: "https://prix-mboka.vercel.app/open.jpg", // URL absolue pointant vers votre image dans le dossier public
+        url: "https://prix-mboka.vercel.app/open.jpg?v=2", // URL absolue pointant vers votre image dans le dossier public
         width: 1200,
         height: 630,
         alt: "Aperçu de l'application Prix Mboka",
