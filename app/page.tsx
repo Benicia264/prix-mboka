@@ -16,6 +16,27 @@ import {
   IconeSourire,
 } from "@/app/composants/Icones";
 
+export const metadata = {
+  title: "Prix Mboka - Trouvez le prix le plus bas à Brazzaville",
+  description: "Prix Mboka vous permet de signaler et de comparer les prix des produits courants dans les marchés de Brazzaville.",
+  openGraph: {
+    title: "Prix Mboka - Trouvez le prix le plus bas à Brazzaville",
+    description: "Prix Mboka vous permet de signaler et de comparer les prix des produits courants dans les marchés de Brazzaville.",
+    url: "https://prix-mboka.vercel.app", // Remplacez par l'URL officielle de votre site en production
+    siteName: "Prix Mboka",
+    images: [
+      {
+        url: "https://prix-mboka.vercel.app/open.jpg", // URL absolue pointant vers votre image dans le dossier public
+        width: 1200,
+        height: 630,
+        alt: "Aperçu de l'application Prix Mboka",
+      },
+    ],
+    locale: "fr_FR",
+    type: "website",
+  },
+};
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
