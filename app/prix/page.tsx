@@ -27,7 +27,7 @@ function getImageProduit(nomProduit: string): string {
   if (nom.includes("huile")) return "/huile.jpg";
   if (nom.includes("riz")) return "/riz.jpg";
 
-  return "/tomate.jpg"; // Image par défaut de secours
+  return "/tomate.jpg"; 
 }
 
 export default async function PagePrix() {
