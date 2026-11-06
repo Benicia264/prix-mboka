@@ -1,29 +1,9 @@
-"use client";
-
-import { Suspense } from "react";
 import Link from "next/link";
-import { useSession } from "next-auth/react"; // Utilisation du hook client si dispo, ou gestion classique
 import Logo from "./Logo";
-
-function initiales(nom: string) {
-  const mots = nom.trim().split(/\s+/).filter(Boolean);
-  if (mots.length === 0) return "?";
-  const premiere = mots[0][0];
-  const derniere = mots.length > 1 ? mots[mots.length - 1][0] : "";
-  return (premiere + derniere).toUpperCase();
-}
+import { CompteApp } from "./CompteClient";
 
 const PASTILLE =
   "shrink-0 whitespace-nowrap rounded-full border border-[#ffd9b8] bg-white px-4 py-1.5 text-sm font-medium text-slate-900 hover:bg-[#fff6ee]";
-
-// Composant Compte adapté pour un Client Component
-function CompteClient() {
-  // Si tu utilises NextAuth côté client, tu peux récupérer la session ainsi :
-  // const { data: session } = useSession();
-  
-  // Alternative simple : si tu veux garder le rendu serveur, 
-  // le plus propre est de mettre la fonction de déconnexion dans un fichier externe (ex: actions.ts).
-}
 
 export default function NavbarApp() {
   return (
@@ -56,14 +36,7 @@ export default function NavbarApp() {
             >
               Signaler un prix
             </Link>
-            
-            {/* Bouton Connexion / Déconnexion direct */}
-            <Link
-              href="/connexion"
-              className="whitespace-nowrap rounded-full border border-[#ffb36b] bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-[#fff6ee]"
-            >
-              Mon compte
-            </Link>
+            <CompteApp />
           </div>
         </div>
 

@@ -1,39 +1,6 @@
-import { Suspense } from "react";
 import Link from "next/link";
-import { auth } from "@/auth";
 import Logo from "./Logo";
-
-async function BoutonsCompte() {
-  const session = await auth();
-
-  if (session?.user) {
-    return (
-      <Link
-        href="/prix"
-        className="whitespace-nowrap rounded-full bg-linear-to-r from-[#ff8a1f] to-[#ff6a00] px-4 py-2 text-xs font-semibold text-white shadow hover:brightness-95 sm:px-6 sm:py-2.5 sm:text-sm"
-      >
-        Accéder aux prix
-      </Link>
-    );
-  }
-
-  return (
-    <>
-      <Link
-        href="/connexion"
-        className="whitespace-nowrap rounded-full border border-[#ffb36b] bg-white px-3 py-2 text-xs font-semibold text-slate-900 hover:bg-[#fff6ee] sm:px-6 sm:py-2.5 sm:text-sm"
-      >
-        Se connecter
-      </Link>
-      <Link
-        href="/inscription"
-        className="whitespace-nowrap rounded-full bg-linear-to-r from-[#ff8a1f] to-[#ff6a00] px-3 py-2 text-xs font-semibold text-white shadow hover:brightness-95 sm:px-6 sm:py-2.5 sm:text-sm"
-      >
-        S’inscrire
-      </Link>
-    </>
-  );
-}
+import { BoutonsPublics } from "./CompteClient";
 
 export default function NavbarPublique() {
   return (
@@ -65,9 +32,7 @@ export default function NavbarPublique() {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <Suspense fallback={<span className="block h-9 w-32 sm:w-44" />}>
-            <BoutonsCompte />
-          </Suspense>
+          <BoutonsPublics />
         </div>
       </nav>
     </header>
